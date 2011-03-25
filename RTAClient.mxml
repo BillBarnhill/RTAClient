@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" >
+    
+    <mx:Script>
+        <![CDATA[
+            import com.roadtoamber.RTA;
+            private var rta:RTA;
+            private function connect():void {
+                rta = new RTA(characterName.text, password.text, output);
+            }
+            private function sendCommand():void {
+                var ba:ByteArray = new ByteArray();
+                ba.writeMultiByte(command.text + "\n", "UTF-8");
+                rta.writeBytesToSocket(ba);
+                command.text = "";
+            }
+        ]]>
+    </mx:Script>
+    
+    <mx:Label id="header" text="Road to AMber MUSH Client" fontSize="18" fontStyle="bold" />
+    <mx:Label id="subheader" text="Developed by Pwyll (w.a.barnhill@gmail.com) and Communitivity.com" fontSize="12" />
+
+    <mx:ApplicationControlBar width="100%">
+        <mx:Label text="Character:" />
+        <mx:TextInput id="characterName" width="100%" />
+        <mx:Spacer />
+        <mx:Label text="Password:" />
+        <mx:TextInput id="password" text="" textAlign="right" maxChars="10" />
+        <mx:Spacer />
+        <mx:Button label="Login" click="connect();" />
+    </mx:ApplicationControlBar>
+
+    <mx:Spacer />
+
+    <mx:Panel  width="100%" height="100%" paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10">
+    	<mx:VDividedBox id="console"  width="100%" height="100%">
+        	<mx:TextArea id="output" editable="false" width="100%" height="100%" fontFamily="Courier New" fontSize="14" />
+        	<mx:ControlBar width="100%" height="100%" >
+            		<mx:TextInput id="command" width="100%" enter="sendCommand();" height="100%" />
+        	</mx:ControlBar>
+    	</mx:VDividedBox>
+    </mx:Panel>
+
+</mx:WindowedApplication>

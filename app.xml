@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://ns.adobe.com/air/application/1.0">
+    <id>samples.flex.HelloWorld</id>
+    <version>0.1</version>
+    <filename>RTAClient</filename>
+    <initialWindow>
+        <content>RTAClient.swf</content>
+        <visible>true</visible>
+        <systemChrome>none</systemChrome>
+        <transparent>true</transparent>
+        <width>800</width>
+        <height>500</height>
+    </initialWindow>
+</application>
